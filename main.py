@@ -119,12 +119,15 @@ def game_loop():
         for projectile in projectilelist:
             if projectile.alive:
                 projectile.move()
+                #Handle projectile zombie collisions
                 for zombie in zombielist:
                     if zombie.alive and projectile.collide(zombie):
                         zombies_to_remove.append(zombie)
                         projectiles_to_remove.append(projectile)
                         zombie.die()
                         zombiedeaths += 1
+                #Handle projectile human collisions
+                #Armed humans are immune to friendly fire
                 for human in humanlist:
                     if not isinstance(human, ArmedHuman):
                         if human.alive and projectile.collide(human):
@@ -137,25 +140,32 @@ def game_loop():
             else:
                 projectiles_to_remove.append(projectile)
 
+        #Remove dead agents from the sprite lists
+        #If statement is in place to prevent the program from crashing
         for human in humans_to_remove:
             if human in humanlist:
                 humanlist.remove(human)
 
+        #Add new agents to the sprite lists
         for zombie in zombies_to_add:
             if zombie not in zombielist:
                 zombielist.append(zombie)
 
+        #Remove dead agents from the sprite lists
         for zombie in zombies_to_remove:
             if zombie in zombielist:
                 zombielist.remove(zombie)
 
+        #Remove dead agents from the sprite lists
         for projectile in projectiles_to_remove:
             if projectile in projectilelist:
                 projectilelist.remove(projectile)
         
+        #Separate agents that are too close to each other
         separate_agents(humanlist, humanlist, 25)
         separate_agents(zombielist, zombielist, 20)
 
+        #Draw the agents on the screen
         screen.fill(BLACK)
         for human in humanlist:
             if human.alive:
@@ -170,7 +180,7 @@ def game_loop():
                 projectile.draw(screen)
                                 
 
-
+        #Display zombie and friendly fire deaths on the screen
         font = pygame.font.Font(None, 36)
         text1 = font.render("Zombified humans: " + str(zombifiedhumans), 1, WHITE)
         text2 = font.render("Friendly fire deaths: " + str(friendlyfiredeaths), 1, WHITE)
@@ -179,6 +189,7 @@ def game_loop():
         screen.blit(text2, (10, 30))
         screen.blit(text3, (10, 50))
 
+        #Display the winner on the screen
         if len(humanlist) == 0:
             text4 = font.render("Zombies win", 1, WHITE)
             screen.blit(text4, (SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 - 50))
@@ -190,7 +201,7 @@ def game_loop():
 
 
 
-
+        #Update the screen
         pygame.display.flip()
         clock.tick(60)
 
