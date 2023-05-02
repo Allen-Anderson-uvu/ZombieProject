@@ -4,7 +4,7 @@ Screen Height and Width can be controlled in settings.py with the SCREEN_HEIGHT 
 I'm running this on a 16 inch laptop and this size is what looked best to me
 
 If the program is running slowly reduce the number of agents on screen with the NUMBER_OF_HUMANS, NUMBER_OF_ARMED_HUMANS, and NUMBER_OF_ZOMBIES
-variables.  It runs smoothly on my machine with the following specs:
+variables in settings.py.  It runs smoothly on my machine with the following specs:
 
 M1 Pro Processor
 16 GB RAM 
