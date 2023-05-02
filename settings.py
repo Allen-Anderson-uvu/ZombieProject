@@ -1,37 +1,33 @@
-import pygame
-#pygame settings go here
+import random
+#pygame settings
 
-SCREEN_WIDTH = 1200
-SCREEN_HEIGHT = 1000
-SCREEN_TITLE = "Zombie Infection Simulator"
+SCREEN_WIDTH = 1600
+SCREEN_HEIGHT = 800
+SCREEN_SIZE = (SCREEN_WIDTH, SCREEN_HEIGHT)
+SCREEN_TITLE = "ZOMBIE INFECTION SIMULATOR"
 
 # Colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-RED = (255, 0, 0)
+RED = (255, 0 , 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
-PURPLE = (255, 0, 255)
-YELLOW = (255, 255, 0)
-ORANGE = (255, 165, 0)
-BROWN = (165, 42, 42)
-CYAN = (0, 255, 255)
+YELLOW = (255,255,0)
+BROWN = (165,42,42)
+ORANGE = (255,165,0)
+PURPLE = (128,0,128)
+PINK = (255,192,203)
+GREY = (128,128,128)
 
 # Player settings
-PLAYER_MOVE_SPEED = 1
-PLAYER_HEALTH = 100
-
-# Zombie settings
-ZOMBIE_MOVE_SPEED = .1
-ZOMBIE_HEALTH = 100
+PLAYER_SPEED = 3
+ZOMBIE_SPEED = 2.5
+HUMAN_SPEED = 3
+ARMED_HUMAN_SPEED = 3
+PROJECTILE_SPEED = 15
+NUMBER_OF_HUMANS = 300
+NUMBER_OF_ZOMBIES = 10
+NUMBER_OF_ARMED_HUMANS = 10
 
 # Game settings
 FPS = 60
-
-# Human settings
-NUM_HUMANS = 100
-
-# Zombie settings
-NUM_ZOMBIES = 50
-
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
